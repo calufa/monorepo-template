@@ -1,0 +1,4 @@
+pulumi==3.9.1
+pulumi-docker==3.0.0
+pulumi-kubernetes==3.5.1
+PyYAML==5.4.1
