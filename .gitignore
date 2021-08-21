@@ -1,0 +1,7 @@
+*/lib
+*/tools
+.cache
+.DS_Store
+.env
+Pulumi.*.yaml
+__pycache__
