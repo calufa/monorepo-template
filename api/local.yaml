@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  main:
+    depends_on:
+      - postgres
+    build: .
+    image: ${APP_NAME}
+    environment:
+      IS_DEVELOPMENT: 'true'
+      POSTGRES_DB: test-db
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: test-user
+      POSTGRES_PASSWORD: test-pass
+    command: >
+      bash -c '
+      '
+    ports:
+      - 8080:8080
+    volumes:
+  postgres:
+    image: postgres:9.6.11-alpine
+    environment:
+      POSTGRES_DB: test-db
+      POSTGRES_USER: test-user
+      POSTGRES_PASSWORD: test-pass
+    ports:
+      - 5432:5432
