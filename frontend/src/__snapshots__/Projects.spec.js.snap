@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`it works 1`] = `
+.c0 {
+  background: red;
+  width: 200px;
+  height: 200px;
+}
+
+<div
+  className="c0"
+>
+  project-1
+</div>
+`;
