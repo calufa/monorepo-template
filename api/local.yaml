@@ -15,10 +15,20 @@ services:
       POSTGRES_PASSWORD: test-pass
     command: >
       bash -c '
+        tools/wait-for-it.sh postgres:5432 -t 60 &&
+        pytest -s -vv --mocha &&
+        watchmedo shell-command \
+          --command="pytest -s -vv --mocha" \
+          --patterns="*.json;*.py;*.sh;*.txt;*.yaml;" \
+          --recursive \
+          /app
       '
     ports:
       - 8080:8080
     volumes:
+      - ./:/app
+      - ../python-lib:/app/lib
+      - ../tools:/app/tools
   postgres:
     image: postgres:9.6.11-alpine
     environment:

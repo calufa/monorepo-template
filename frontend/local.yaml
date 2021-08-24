@@ -4,9 +4,10 @@ services:
   main:
     build: .
     image: ${APP_NAME}
+    environment:
+      API_URI: http://localhost:8080/graphql
     command: bash -c 'npm install && npm test'
     ports:
       - 3000:3000
     volumes:
       - ./:/app
-      - ../tools:/app/tools

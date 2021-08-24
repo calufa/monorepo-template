@@ -14,7 +14,7 @@ def build_image(depends_on, image_name, context_path):
         opts=ResourceOptions(depends_on=depends_on),
         skip_push=True,
     )
-    return (image,)
+    return [image]
 
 
 def build_images(depends_on):
@@ -42,7 +42,7 @@ def get_app_paths():
     paths = []
     for path in glob.glob("../*"):
         path = os.path.abspath(path)
-        if os.path.isdir(path) and os.path.exists(f"{path}/local.yaml"):
+        if path != os.getcwd() and os.path.exists(f"{path}/local.yaml"):
             paths.append(path)
     return paths
 

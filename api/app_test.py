@@ -1,6 +1,8 @@
 import pytest
+from graphene.test import Client
 from lib.db import reset_db, session
 from models import Project
+from schema import schema
 
 
 @pytest.fixture(autouse=True)
@@ -16,4 +18,13 @@ def test():
     session.add(project)
     session.commit()
 
+    result = Client(schema).execute(
+        """
+        {
+            projects {
+                name
+            }
+        }
+        """
+    )
     assert result == {"data": {"projects": [{"name": "project-1"}]}}

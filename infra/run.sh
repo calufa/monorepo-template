@@ -4,8 +4,8 @@ kind create cluster
 # Set Kubectl context
 SERVER=$(kind get kubeconfig --internal | yq e .clusters[0].cluster.server -)
 CERT=$(kind get kubeconfig --internal | yq e .clusters[0].cluster.\"certificate-authority-data\" -)
-kubectl config set clusters.infra.server $SERVER
-kubectl config set clusters.infra.certificate-authority-data $CERT
+kubectl config set clusters.infra.server ${SERVER}
+kubectl config set clusters.infra.certificate-authority-data ${CERT}
 kubectl config set contexts.infra.cluster infra
 kubectl config set contexts.infra.user kind-kind
 kubectl config use infra
