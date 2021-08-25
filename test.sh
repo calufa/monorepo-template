@@ -4,7 +4,7 @@ if [ "${APP_NAME}" = "" ]
 		echo "ERROR: enter an application name"
 		exit 1
 	else
-		export FILE_PATH="${APP_NAME}/local.yaml"
+		export FILE_PATH="${APP_NAME}/test.yaml"
 fi
 docker-compose -f ${FILE_PATH} down --remove-orphans
 docker-compose -f ${FILE_PATH} build main
