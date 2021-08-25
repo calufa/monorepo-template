@@ -1,0 +1,7 @@
+services:
+  main:
+    environment:
+      REACT_APP_API_URI: http://localhost:8080/graphql
+    command: bash -c 'npm install && npm start'
+    ports:
+      - 3000:3000
