@@ -1,6 +1,8 @@
-# Create Kubernetes cluster
+# Create and push Docker images to kind-registry
+python3 /app/infra/docker.py
+# Reset Kubernetes cluster
 kind delete cluster
-kind create cluster
+kind create cluster --config=/app/infra/kind.yaml
 # Set Kubectl context
 SERVER=$(kind get kubeconfig --internal | yq e .clusters[0].cluster.server -)
 CERT=$(kind get kubeconfig --internal | yq e .clusters[0].cluster.\"certificate-authority-data\" -)
