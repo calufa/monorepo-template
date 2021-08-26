@@ -15,3 +15,5 @@ RUN rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY ./package.json ./package.json
 RUN npm install
+
+COPY . .
