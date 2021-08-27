@@ -8,4 +8,7 @@ if [ "${APP_NAME}" = "" ]
 fi
 docker-compose -f ${FILE_PATH} down --remove-orphans
 docker-compose -f ${FILE_PATH} build main
-docker-compose -f ${FILE_PATH} run --service-ports main
+docker-compose -f ${FILE_PATH} run \
+	--name ${APP_NAME} \
+	--service-ports \
+	main
