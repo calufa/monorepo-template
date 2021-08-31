@@ -3,7 +3,7 @@ version: '3'
 services:
   main:
     build: .
-    image: ${APP_NAME}
+    image: frontend
     command: bash -c 'npm install && npm test'
     volumes:
       - ./:/app

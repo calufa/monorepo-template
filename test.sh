@@ -1,4 +1,4 @@
-export APP_NAME=${1}
+APP_NAME=${1}
 if [ "${APP_NAME}" = "" ]
 	then
 		echo "ERROR: enter an application name"

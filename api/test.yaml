@@ -5,7 +5,7 @@ services:
     depends_on:
       - postgres
     build: .
-    image: ${APP_NAME}
+    image: api
     environment:
       IS_DEVELOPMENT: 'true'
       POSTGRES_DB: test-db

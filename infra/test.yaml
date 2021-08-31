@@ -5,7 +5,7 @@ services:
     depends_on:
       - kind-registry
     build: .
-    image: ${APP_NAME}
+    image: infra
     platform: linux/amd64
     environment:
       PULUMI_CONFIG_PASSPHRASE: infra
