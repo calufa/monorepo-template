@@ -1,6 +1,6 @@
 import subprocess
 
-from utils import get_app_paths
+from utils import get_app_config, get_app_paths
 
 
 def run(command):
@@ -15,8 +15,14 @@ def run(command):
 
 if __name__ == "__main__":
     for app_path in get_app_paths():
-        app_name = app_path.split("/")[-1]
-        image_name = f"localhost:5000/{app_name}"
-        run(f"docker build -t {app_name} {app_path}")
-        run(f"docker tag {app_name} {image_name}")
+        main_service_name = app_path.split("/")[-1]
+        print("service_name:", main_service_name)
+        main_service = get_app_config(app_path)["services"]["main"]
+        for files in main_service.get("copy", []):
+            origin, destination = files.split(":")
+            run(f"rm -rf {destination}")
+            run(f"cp -r {origin} {destination}")
+        image_name = f"localhost:5000/{main_service_name}"
+        run(f"docker build -t {main_service_name} {app_path}")
+        run(f"docker tag {main_service_name} {image_name}")
         run(f"docker push {image_name}")
