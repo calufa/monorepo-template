@@ -15,8 +15,8 @@ services:
       POSTGRES_PASSWORD: test-pass
     command: |
       bash -c '
-        tools/wait-for-it.sh postgres:5432 -t 60 &&
-        pytest -s -vv --mocha &&
+        tools/wait-for-it.sh postgres:5432 -t 60
+        pytest -s -vv --mocha
         watchmedo shell-command \
           --command="pytest -s -vv --mocha" \
           --patterns="*.json;*.py;*.sh;*.txt;*.yaml;" \

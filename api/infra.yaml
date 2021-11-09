@@ -1,7 +1,7 @@
 services:
   main:
     command: |
-      tools/wait-for-it.sh postgres:5432 -t 60 &&
+      tools/wait-for-it.sh postgres:5432 -t 60
       flask run --host 0.0.0.0 --port 80
     ports:
       - 80:80
