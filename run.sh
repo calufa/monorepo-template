@@ -18,6 +18,12 @@ docker run \
 	-t mikefarah/yq:2.4.2 \
 	sh -c "yq merge ${RUN_FILE_PATH} ${TEST_FILE_PATH} > ${MERGED_FILE_PATH}"
 
-docker-compose -f ${FILE_PATH} down --remove-orphans
+function cleanup {
+	docker-compose -f ${FILE_PATH} down --remove-orphans
+}
+
+trap cleanup EXIT
+cleanup
+
 docker-compose -f ${FILE_PATH} build main
 docker-compose -f ${FILE_PATH} run --service-ports main
