@@ -13,7 +13,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 WORKDIR /app
-COPY ./package.json ./package.json
+COPY package.json package.json
 RUN npm install
 
 COPY . .
