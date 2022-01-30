@@ -28,6 +28,10 @@ it('it works', async () => {
       <Projects />
     </MockedProvider>
   )
-  await new Promise(e => setTimeout(e, 50))
+
+  await TestRenderer.act(async () => {
+    await new Promise(e => setTimeout(e, 50))
+  })
+
   expect(render.toJSON()).toMatchSnapshot()
 })
